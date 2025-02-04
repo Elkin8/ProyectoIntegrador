@@ -1,4 +1,6 @@
-const User = require('../models/user1'); // Suponiendo que tienes el modelo User
+const User = require('../models/user1'); 
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 // Crear un nuevo usuario
 const createUser = async (req, res) => {
@@ -85,11 +87,44 @@ const deleteUser = async (req, res) => {
   }
 };
 
+
+const loginUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+    console.log('Email recibido:', email);
+
+    // Verificar si el usuario existe
+    const user = await User.findOne({ where: { email } });
+    if (!user) {
+      return res.status(404).json({ error: "Usuario no encontrado" });
+    }
+
+    // Comparar la contraseña ingresada con la almacenada
+    const isMatch = await bcrypt.compare(password, user.password);
+    if (!isMatch) {
+      return res.status(400).json({ error: "Contraseña incorrecta" });
+    }
+
+    // Generar el token JWT
+    const token = jwt.sign({ id: user.id, role: user.role }, "secreto", {
+      expiresIn: "1h",
+    });
+
+    res.json({ message: "Login exitoso", token });
+  } catch (error) {
+    console.error("Error en el login:", error);
+    res.status(500).json({ error: "Error interno del servidor" });
+  }
+};
+
+
+
 module.exports = {
   createUser,
   getUsers,
   getUserById,
   updateUser,
   deleteUser,
+  loginUser,
 };
 
