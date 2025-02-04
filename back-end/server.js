@@ -1,22 +1,21 @@
 const express = require('express');
-const { Client } = require('pg');
-require('dotenv').config();
+const { connectDB, sequelize } = require('./db'); // Importa la función connectDB
+const userRoutes = require('./routes/routes.js');
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
+
+app.use(express.json());
 
 // Conectar a la base de datos PostgreSQL
-const client = new Client({
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  database: process.env.DB_NAME,
-  user: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-});
+connectDB();
 
-client.connect()
-  .then(() => console.log('Conexión exitosa a PostgreSQL'))
-  .catch(err => console.error('Error de conexión a PostgreSQL', err));
+sequelize.sync({ force: false }) // Cambia 'force: true' si deseas eliminar y recrear las tablas cada vez
+  .then(() => console.log('Las tablas se han sincronizado correctamente'))
+  .catch((error) => console.error('Error al sincronizar las tablas:', error));
+
+// Usar las rutas de usuario
+app.use('/api', userRoutes); // Prefijo /api para todas las rutas de usuarios
 
 // Rutas
 app.get('/', (req, res) => {
@@ -26,3 +25,5 @@ app.get('/', (req, res) => {
 app.listen(port, () => {
   console.log(`Servidor Express escuchando en http://localhost:${port}`);
 });
+
+
