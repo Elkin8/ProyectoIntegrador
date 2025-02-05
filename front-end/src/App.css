@@ -36,3 +36,16 @@
     transform: rotate(360deg);
   }
 }
+
+
+.containerf {
+  margin-top: 15rem;
+  margin-left: 21rem;
+  width: 90%;
+  max-width: 800px;
+  padding: 2rem;
+  background: transparent;
+  border: solid 2px black;
+  border-radius: 10px;
+  box-shadow: 10px 10px 20px rgba(0,0,0,0.9);
+}
