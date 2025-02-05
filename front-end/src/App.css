@@ -75,7 +75,7 @@
   background: transparent;
   width: 30rem;
   border: 0px;
-  box-shadow: 0px 10px 10px rgba(0,0,0,0.9);
+  box-shadow: 0px 10px 10px rgba(0,0,0,0.6);
 }
 
 .navbar p{
@@ -108,7 +108,7 @@
   background: transparent;
   width: 30rem;
   border: 0px;
-  box-shadow: 0px 10px 10px rgba(0,0,0,0.9);
+  box-shadow: 0px 10px 10px rgba(0,0,0,0.6);
 }
 
 .adminnavbar p{
