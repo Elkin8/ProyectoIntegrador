@@ -51,10 +51,6 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'userId',
       as: 'winners'
     });
-    User.hasMany(models.Reward, {
-      foreignKey: 'userId',
-      as: 'rewards'
-    });
   };
 
   return User;

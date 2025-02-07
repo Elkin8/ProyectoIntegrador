@@ -1,7 +1,5 @@
 const { Sequelize, DataTypes } = require('sequelize');
 require('dotenv').config();
-const fs = require('fs');
-const path = require('path');
 
 const sequelize = new Sequelize(
   process.env.DB_DATABASE,  // Nombre de la base de datos
@@ -18,7 +16,7 @@ const models = {
   User: require('./models/user1')(sequelize, DataTypes),
   Audit: require('./models/audit')(sequelize, DataTypes),
   Challenge: require('./models/challenge')(sequelize, DataTypes),
-  Reward: require('./models/reward')(sequelize, DataTypes),
+  Inscription: require('./models/inscription')(sequelize, DataTypes),
   Winner: require('./models/winner')(sequelize, DataTypes),
 };
 

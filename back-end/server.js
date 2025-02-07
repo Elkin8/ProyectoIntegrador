@@ -1,6 +1,6 @@
 const express = require("express");
 const { connectDB, sequelize } = require("./db");
-const userRoutes = require("./routes/routes.js");
+const Routes = require("./routes/Routes1.js");
 const cors = require("cors"); 
 
 
@@ -10,8 +10,8 @@ const port = process.env.PORT || 3000;
 
 app.use(
   cors({
-    origin: "http://localhost:3001", // Especifica el frontend
-    credentials: true, // Permite enviar cookies y headers de autenticación
+    origin: "http://localhost:3001", 
+    credentials: true, 
   })
 );
 
@@ -25,19 +25,19 @@ console.log("Modelos cargados en Sequelize:", sequelize.models);
 
 
 sequelize
-  .sync({ force: false }) // ⚠️ Cambia a true solo si quieres resetear la BD
+  .sync({ force: false }) 
   .then(() => console.log("Las tablas se han sincronizado correctamente"))
   .catch((error) => console.error("Error al sincronizar las tablas:", error));
 
-// 🔹 Rutas de usuario
-app.use("/api", userRoutes);
+// Rutas
+app.use('/api', Routes);
 
-// 🔹 Ruta de prueba para verificar CORS
+// Ruta de prueba para verificar CORS
 app.get("/api/test", (req, res) => {
   res.json({ message: "CORS funcionando correctamente" });
 });
 
-// 🔹 Servidor corriendo
+// Servidor corriendo
 app.listen(port, () => {
   console.log(`Servidor Express escuchando en http://localhost:${port}`);
 });

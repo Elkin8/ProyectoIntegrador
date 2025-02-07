@@ -1,30 +1,37 @@
 module.exports = (sequelize, DataTypes) => {
   const Winner = sequelize.define('Winner', {
-    description: {
-      type: DataTypes.TEXT,
+    userId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
-      unique: true
+      references: {
+        model: 'Users',
+        key: 'id'
+      }
     },
-    date: {
-      type: DataTypes.DATE,
-      defaultValue: DataTypes.NOW
+    challengeId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: 'Challenges',
+        key: 'id'
+      }
+    },
+    proofLink: {
+      type: DataTypes.STRING,
+      allowNull: true
     }
   }, {
     timestamps: true,
   });
 
   Winner.associate = function(models) {
-    Winner.belongsTo(models.Challenge, {
-      foreignKey: 'challengeId',
-      as: 'challenge'
-    });
     Winner.belongsTo(models.User, {
       foreignKey: 'userId',
       as: 'user'
     });
-    Winner.belongsTo(models.Reward, {
-      foreignKey: 'rewardId',
-      as: 'reward'
+    Winner.belongsTo(models.Challenge, {
+      foreignKey: 'challengeId',
+      as: 'challenge'
     });
   };
 

@@ -1,0 +1,46 @@
+const { Inscription, Challenge, Winner } = require('../db');
+
+// Inscribir a un usuario en un reto
+const createInscription = async (req, res) => {
+  try {
+    const { userId, challengeId } = req.body;
+
+    // Verificar si el usuario ya está inscrito en otro reto
+    const existingInscription = await Inscription.findOne({ where: { userId } });
+    if (existingInscription) {
+      return res.status(400).json({ error: "El usuario ya está inscrito en otro reto" });
+    }
+
+    // Crear la inscripción
+    const newInscription = await Inscription.create({ userId, challengeId });
+    res.status(201).json(newInscription);
+  } catch (error) {
+    console.error("Error al inscribir al usuario en el reto:", error);
+    res.status(500).json({ error: "Error interno del servidor" });
+  }
+};
+
+// Declarar un ganador para un reto
+const declareWinner = async (req, res) => {
+  try {
+    const { userId, challengeId, proofLink } = req.body;
+
+    // Verificar si ya hay un ganador para el reto
+    const existingWinner = await Winner.findOne({ where: { challengeId } });
+    if (existingWinner) {
+      return res.status(400).json({ error: "Ya hay un ganador para este reto" });
+    }
+
+    // Crear el ganador
+    const newWinner = await Winner.create({ userId, challengeId, proofLink });
+    res.status(201).json(newWinner);
+  } catch (error) {
+    console.error("Error al declarar el ganador del reto:", error);
+    res.status(500).json({ error: "Error interno del servidor" });
+  }
+};
+
+module.exports = {
+  createInscription,
+  declareWinner,
+};
