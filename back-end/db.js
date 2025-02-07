@@ -1,5 +1,7 @@
 const { Sequelize, DataTypes } = require('sequelize');
 require('dotenv').config();
+const fs = require('fs');
+const path = require('path');
 
 const sequelize = new Sequelize(
   process.env.DB_DATABASE,  // Nombre de la base de datos
@@ -12,7 +14,20 @@ const sequelize = new Sequelize(
   }
 );
 
-// Función para conectar a la base de datos
+const models = {
+  User: require('./models/user1')(sequelize, DataTypes),
+  Audit: require('./models/audit')(sequelize, DataTypes),
+  Challenge: require('./models/challenge')(sequelize, DataTypes),
+  Reward: require('./models/reward')(sequelize, DataTypes),
+  Winner: require('./models/winner')(sequelize, DataTypes),
+};
+
+Object.keys(models).forEach(modelName => {
+  if (models[modelName].associate) {
+    models[modelName].associate(models);
+  }
+});
+
 const connectDB = async () => {
   try {
     await sequelize.authenticate();
@@ -22,7 +37,4 @@ const connectDB = async () => {
   }
 };
 
-module.exports = { sequelize, DataTypes, connectDB }; // Exporta solo una instancia de sequelize
-
-
-
+module.exports = { sequelize, DataTypes, connectDB, ...models };

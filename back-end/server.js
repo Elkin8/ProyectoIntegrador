@@ -7,7 +7,7 @@ const cors = require("cors");
 const app = express();
 const port = process.env.PORT || 3000;
 
-// 🔹 Configuración correcta de CORS
+
 app.use(
   cors({
     origin: "http://localhost:3001", // Especifica el frontend
@@ -19,6 +19,10 @@ app.use(express.json());
 
 // Conectar a la base de datos PostgreSQL
 connectDB();
+
+
+console.log("Modelos cargados en Sequelize:", sequelize.models);
+
 
 sequelize
   .sync({ force: false }) // ⚠️ Cambia a true solo si quieres resetear la BD
