@@ -18,7 +18,9 @@ const AdminNavbar = () => {
         <div class="container-fluid w-100 p-0"> 
           <div class="row g-0"> 
             <div class="col text-center border-end py-2"> 
-              <button><p>Crear reto</p></button>
+              <button onClick={() => navigate("/create-challenge")}>
+                <p>Crear reto</p>
+              </button>
             </div>
             <div class="col text-center border-end py-2"> 
               <button><p>Actualizar reto</p></button>
