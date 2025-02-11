@@ -6,6 +6,7 @@ import Home from "./pages/Home.jsx";
 import AdminPage from "./pages/AdminPage.jsx";
 import ChallengePage from "./pages/ChallengePage.jsx";
 import DeleteChallengePage from "./pages/DeleteChallengePage.jsx";
+import UpdateChallengePage from "./pages/UpdateChallengePage.jsx";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/create-challenge" element={<ChallengePage />} />
         <Route path="/delete-challenge" element={<DeleteChallengePage />} />
+        <Route path="/update-challenge" element={<UpdateChallengePage />} />
       </Routes>
     </Router>
   );

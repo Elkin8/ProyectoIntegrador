@@ -98,7 +98,7 @@ const ChallengePage = () => {
             />
           </div>
         )}
-        <button type="submit" className="btn-form3">Crear</button>
+        <button type="submit" className="btn-form1">Crear</button>
       </form>
     </div>
     </div>

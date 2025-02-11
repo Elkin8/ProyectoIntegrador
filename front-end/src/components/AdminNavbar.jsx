@@ -23,7 +23,9 @@ const AdminNavbar = () => {
               </button>
             </div>
             <div class="col text-center border-end py-2"> 
-              <button><p>Actualizar reto</p></button>
+              <button onClick={() => navigate("/update-challenge")}>
+                <p>Actualizar reto</p>
+              </button>
             </div>
             <div class="col text-center border-end py-2"> 
               <button onClick={() => navigate("/delete-challenge")}>
