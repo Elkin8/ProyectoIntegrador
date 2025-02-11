@@ -5,6 +5,7 @@ import LoginForm from "./components/LoginForm.jsx";
 import Home from "./pages/Home.jsx";
 import AdminPage from "./pages/AdminPage.jsx";
 import ChallengePage from "./pages/ChallengePage.jsx";
+import DeleteChallengePage from "./pages/DeleteChallengePage.jsx";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/create-challenge" element={<ChallengePage />} />
+        <Route path="/delete-challenge" element={<DeleteChallengePage />} />
       </Routes>
     </Router>
   );

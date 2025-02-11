@@ -39,7 +39,7 @@
 
 
 .containerf {
-  margin-top: 15rem;
+  margin-top: 4rem;
   margin-left: 21rem;
   width: 90%;
   max-width: 800px;
@@ -142,6 +142,61 @@
   background-color: #734E40;
 }
 
+.btn-form1 {
+  display: block;
+  width: 100%;
+  background-color: #C0D99C; 
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-form1:hover {
+  background-color: #95BF56;
+}
+
+
+.btn-form2 {
+  display: block;
+  width: 100%;
+  background-color: #A6615B; 
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-form2:hover {
+  background-color: #8C1F1F;
+}
+
+
+.btn-form3 {
+  display: block;
+  width: 100%;
+  background-color: #B8EBFF; 
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  margin-top: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.btn-form3:hover {
+  background-color: #049DBF;
+} 
 
 h2 {
   text-align: center;

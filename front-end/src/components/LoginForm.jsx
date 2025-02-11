@@ -54,7 +54,7 @@ const LoginForm = () => {
   return (
     <div class="containerf">
       <form onSubmit={handleSubmit}>
-        <h2>Iniciar Sesión</h2>
+        <h2><strong>Iniciar Sesión</strong></h2>
         {error && <p style={{ color: "red" }}>{error}</p>}
         <div class="mb-3">
           <label for="exampleInputEmail1" class="form-label">Correo Electrónico:</label>

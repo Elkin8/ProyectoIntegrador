@@ -26,7 +26,9 @@ const AdminNavbar = () => {
               <button><p>Actualizar reto</p></button>
             </div>
             <div class="col text-center border-end py-2"> 
-              <button><p>Eliminar reto</p></button>
+              <button onClick={() => navigate("/delete-challenge")}>
+                <p>Eliminar reto</p>
+              </button>
             </div>
             <div class="col text-center py-2"> 
               <button onClick={handleLogout}>

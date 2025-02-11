@@ -18,6 +18,7 @@ router.get('/challenges', challengeController.getChallenges);
 router.get('/challenges/:id', challengeController.getChallengeById);
 router.put('/challenges/:id', challengeController.updateChallenge);
 router.delete('/challenges/:id', challengeController.deleteChallenge);
+router.delete('/challenges/:name', challengeController.deleteChallengeByName);
 
 // Rutas para inscripciones
 router.post('/inscriptions', inscriptionController.createInscription);

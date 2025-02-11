@@ -2,7 +2,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import InputField from "../components/InputFields.jsx";
-import Textarea from "../components/Textarea.jsx"; // Asegúrate de que la ruta es correcta
+import Textarea from "../components/Textarea.jsx";
+import AdminNavbar from "../components/AdminNavbar";
 
 const ChallengePage = () => {
   const [formData, setFormData] = useState({
@@ -32,9 +33,11 @@ const ChallengePage = () => {
   };
 
   return (
+    <div>
+      <AdminNavbar />
     <div className="containerf">
       <form onSubmit={handleSubmit}>
-        <h2>Crear Reto</h2>
+        <h2><strong>Crear Reto</strong></h2>
         <div className="mb-3">
           <label className="form-label">Nombre del Reto:</label>
           <InputField
@@ -95,8 +98,9 @@ const ChallengePage = () => {
             />
           </div>
         )}
-        <button type="submit" className="btn btn-primary">Crear</button>
+        <button type="submit" className="btn-form3">Crear</button>
       </form>
+    </div>
     </div>
   );
 };
