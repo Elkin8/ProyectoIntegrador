@@ -1,14 +1,14 @@
-const { Inscription, Challenge, Winner } = require('../db');
+const { Inscription, User, Challenge, Winner } = require('../db');
 
 // Inscribir a un usuario en un reto
 const createInscription = async (req, res) => {
   try {
     const { userId, challengeId } = req.body;
 
-    // Verificar si el usuario ya está inscrito en otro reto
+    // Verificar si el usuario ya está inscrito en algún reto
     const existingInscription = await Inscription.findOne({ where: { userId } });
     if (existingInscription) {
-      return res.status(400).json({ error: "El usuario ya está inscrito en otro reto" });
+      return res.status(400).json({ error: "El usuario ya está inscrito en un reto" });
     }
 
     // Crear la inscripción

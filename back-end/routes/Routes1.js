@@ -11,6 +11,7 @@ router.get('/users/:id', userController.getUserById);
 router.put('/users/:id', userController.updateUser);
 router.delete('/users/:id', userController.deleteUser);
 router.post('/login', userController.loginUser);
+router.get('/current-user', userController.getCurrentUser);
 
 // Rutas para challenges
 router.post('/challenges', challengeController.createChallenge);

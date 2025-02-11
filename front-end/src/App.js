@@ -7,6 +7,7 @@ import AdminPage from "./pages/AdminPage.jsx";
 import ChallengePage from "./pages/ChallengePage.jsx";
 import DeleteChallengePage from "./pages/DeleteChallengePage.jsx";
 import UpdateChallengePage from "./pages/UpdateChallengePage.jsx";
+import ChallengeDetailsPage from "./pages/ChallengeDetailsPage.jsx";
 
 function App() {
   return (
@@ -14,12 +15,12 @@ function App() {
       <Routes>
         <Route path="/" element={<LoginForm />} />  
         <Route path="/register" element={<RegisterPage />} />
-        <Route path="/login" element={<LoginForm />} />
         <Route path="/home" element={<Home />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/create-challenge" element={<ChallengePage />} />
         <Route path="/delete-challenge" element={<DeleteChallengePage />} />
         <Route path="/update-challenge" element={<UpdateChallengePage />} />
+        <Route path="/challenge/:id" element={<ChallengeDetailsPage />} />
       </Routes>
     </Router>
   );

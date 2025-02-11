@@ -43,7 +43,7 @@ const DeleteChallengePage = () => {
             onChange={(e) => setChallengeName(e.target.value)}
           />
         </div>
-        <button className="btn-form1" onClick={handleSearch}>Buscar Reto</button>
+        <button className="btn-form3" onClick={handleSearch}>Buscar Reto</button>
         {challenge && (
           <div className="mt-3">
             <h5>Reto encontrado:</h5>
