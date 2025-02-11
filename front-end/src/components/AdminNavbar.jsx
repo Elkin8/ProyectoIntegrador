@@ -28,15 +28,6 @@ const AdminNavbar = () => {
             <div class="col text-center border-end py-2"> 
               <button><p>Eliminar reto</p></button>
             </div>
-            <div class="col text-center border-end py-2"> 
-              <button><p>Crear Recompensa</p></button>
-            </div>
-            <div class="col text-center border-end py-2"> 
-              <button><p>Actualizar Recompensa</p></button>
-            </div>
-            <div class="col text-center border-end py-2"> 
-              <button><p>Eliminar Recompensa</p></button>
-            </div>
             <div class="col text-center py-2"> 
               <button onClick={handleLogout}>
                 <p>Cerrar Sesión</p>
