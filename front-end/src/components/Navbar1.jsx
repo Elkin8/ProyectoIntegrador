@@ -5,7 +5,7 @@ const Navbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/login");
+    navigate("/");
   };
 
   return (
@@ -18,7 +18,9 @@ const Navbar = () => {
         <div class="container-fluid w-100 p-0"> 
           <div class="row g-0"> 
             <div class="col text-center border-end py-2"> 
-              <button><p>Menú principal</p></button>
+              <button onClick={() => navigate("/home")}>
+                <p>Menú principal</p>
+              </button>
             </div>
             <div class="col text-center border-end py-2"> 
               <button><p>Contáctanos</p></button>

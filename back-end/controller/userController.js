@@ -4,22 +4,20 @@ const jwt = require("jsonwebtoken");
 
 // Crear un nuevo usuario
 const createUser = async (req, res) => {
-    try {
-      console.log("Solicitud recibida en /api/users con datos:", req.body); // Log para ver qué datos llegan
-      const { username, identity, email, password, role } = req.body;
-  
-      if (!username || !email || !password) {
-        return res.status(400).json({ error: "Faltan datos obligatorios" });
-      }
-  
-      const newUser = await User.create({ username, identity, email, password, role });
-      res.status(201).json(newUser);
-    } catch (error) {
-      console.error("Error al crear usuario:", error);
-      res.status(500).json({ error: "Error interno del servidor" });
+  try {
+    const { username, identity, email, password, role } = req.body;
+
+    if (!username || !email || !password) {
+      return res.status(400).json({ error: "Faltan datos obligatorios" });
     }
-  };
-  
+
+    const newUser = await User.create({ username, identity, email, password, role });
+    res.status(201).json(newUser);
+  } catch (error) {
+    console.error("Error al crear usuario:", error);
+    res.status(500).json({ error: "Error interno del servidor" });
+  }
+};
 
 // Obtener todos los usuarios
 const getUsers = async (req, res) => {
@@ -44,6 +42,22 @@ const getUserById = async (req, res) => {
   } catch (error) {
     console.error('Error al obtener el usuario', error);
     res.status(500).json({ error: 'Error al obtener el usuario' });
+  }
+};
+
+// Obtener el usuario actual
+const getCurrentUser = async (req, res) => {
+  try {
+    const token = req.headers.authorization.split(' ')[1];
+    const decoded = jwt.verify(token, "secreto");
+    const user = await User.findByPk(decoded.id);
+    if (!user) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+    res.status(200).json(user);
+  } catch (error) {
+    console.error('Error al obtener el usuario actual', error);
+    res.status(500).json({ error: 'Error al obtener el usuario actual' });
   }
 };
 
@@ -87,11 +101,9 @@ const deleteUser = async (req, res) => {
   }
 };
 
-
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
-    console.log('Email recibido:', email);
 
     // Verificar si el usuario existe
     const user = await User.findOne({ where: { email } });
@@ -110,21 +122,19 @@ const loginUser = async (req, res) => {
       expiresIn: "1h",
     });
 
-    res.json({ message: "Login exitoso", token });
+    res.json({ message: "Login exitoso", token, username: user.username });
   } catch (error) {
     console.error("Error en el login:", error);
     res.status(500).json({ error: "Error interno del servidor" });
   }
 };
 
-
-
 module.exports = {
   createUser,
   getUsers,
   getUserById,
+  getCurrentUser,
   updateUser,
   deleteUser,
   loginUser,
 };
-

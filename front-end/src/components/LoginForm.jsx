@@ -2,7 +2,6 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-
 const LoginForm = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
   const [error, setError] = useState(null);
@@ -20,9 +19,11 @@ const LoginForm = () => {
       const response = await axios.post("http://localhost:3000/api/login", formData, { withCredentials: true });
       console.log('Respuesta del backend:', response);
 
-      // Almacenar el token que recibimos desde el backend
+      // Almacenar el token y el nombre de usuario que recibimos desde el backend
       const token = response.data.token;
+      const username = response.data.username; // Asegúrate de que el backend envíe el nombre de usuario
       localStorage.setItem('token', token);
+      localStorage.setItem('username', username);
 
       // Decodificar el token para obtener los datos (rol)
       const decodedToken = decodeJWT(token);
@@ -52,22 +53,22 @@ const LoginForm = () => {
   };
 
   return (
-    <div class="containerf">
+    <div className="containerf">
       <form onSubmit={handleSubmit}>
-        <h2>Iniciar Sesión</h2>
+        <h2><strong>Iniciar Sesión</strong></h2>
         {error && <p style={{ color: "red" }}>{error}</p>}
-        <div class="mb-3">
-          <label for="exampleInputEmail1" class="form-label">Correo Electrónico:</label>
-          <input type="email" name="email" class="form-control" aria-describedby="emailHelp" placeholder="Correo electrónico" value={formData.email} onChange={handleChange} />
-          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        <div className="mb-3">
+          <label htmlFor="exampleInputEmail1" className="form-label">Correo Electrónico:</label>
+          <input type="email" name="email" className="form-control" aria-describedby="emailHelp" placeholder="Correo electrónico" value={formData.email} onChange={handleChange} />
+          <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
         </div>
-        <div class="mb-3">
-          <label for="exampleInputPassword1" class="form-label">Password:</label>
-          <input type="password" name="password"  class="form-control" placeholder="Contraseña" value={formData.password} onChange={handleChange} />
+        <div className="mb-3">
+          <label htmlFor="exampleInputPassword1" className="form-label">Password:</label>
+          <input type="password" name="password" className="form-control" placeholder="Contraseña" value={formData.password} onChange={handleChange} />
         </div>
-        <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+        <button type="submit" className="btn-form3">Iniciar Sesión</button>
         <p>------------------------------------------------------------------------------------------------------------------</p>
-        <button type="button" class="btn btn-secondary" onClick={handleRegisterRedirect}>Registrarse</button>
+        <button type="button" className="btn-form4" onClick={handleRegisterRedirect}>Registrarse</button>
       </form>
     </div>
   );

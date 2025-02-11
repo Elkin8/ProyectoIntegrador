@@ -82,10 +82,29 @@ const deleteChallenge = async (req, res) => {
   }
 };
 
+// Eliminar un challenge por nombre
+const deleteChallengeByName = async (req, res) => {
+  try {
+    const { name } = req.params;
+    const challenge = await Challenge.findOne({ where: { name } });
+
+    if (!challenge) {
+      return res.status(404).json({ error: "Reto no encontrado" });
+    }
+
+    await challenge.destroy();
+    res.status(200).json({ message: "Reto eliminado correctamente" });
+  } catch (error) {
+    console.error('Error al eliminar el challenge', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+};
+
 module.exports = {
   createChallenge,
   getChallenges,
   getChallengeById,
   updateChallenge,
   deleteChallenge,
+  deleteChallengeByName,
 };

@@ -24,7 +24,7 @@ const RegisterPage = () => {
     try {
       const response = await axios.post("http://localhost:3000/api/users", formData);
       alert("Usuario registrado con éxito");
-      navigate("/login"); 
+      navigate("/"); 
       console.log(response.data);
     } catch (error) {
       console.error("Error al registrar usuario:", error.response?.data || error);
@@ -56,7 +56,7 @@ const RegisterPage = () => {
         <label for="exampleInputPassword1" class="form-label">Rol:</label>
         <SelectField name="role" value={formData.role} onChange={handleChange} options={[{ value: "user", label: "Usuario" }]} />
       </div>
-        <button type="submit" class="btn btn-primary">Registrarse</button>
+        <button type="submit" class="btn-form4">Registrarse</button>
       </form>
     </div>
   );
