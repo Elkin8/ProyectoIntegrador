@@ -23,7 +23,9 @@ const Navbar = () => {
               </button>
             </div>
             <div class="col text-center border-end py-2"> 
-              <button><p>Contáctanos</p></button>
+              <button onClick={() => navigate("/contact")}>
+                <p>Contáctanos</p>
+              </button>
             </div>
             <div class="col text-center py-2"> 
               <button onClick={handleLogout}>

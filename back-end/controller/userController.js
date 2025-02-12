@@ -45,6 +45,21 @@ const getUserById = async (req, res) => {
   }
 };
 
+// Buscar un usuario por nombre
+const getUserByUsername = async (req, res) => {
+  const { username } = req.params;
+  try {
+    const user = await User.findOne({ where: { username } });
+    if (!user) {
+      return res.status(404).json({ error: 'Usuario no encontrado' });
+    }
+    res.status(200).json(user);
+  } catch (error) {
+    console.error('Error al buscar el usuario por nombre:', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+};
+
 // Obtener el usuario actual
 const getCurrentUser = async (req, res) => {
   try {
@@ -137,4 +152,5 @@ module.exports = {
   updateUser,
   deleteUser,
   loginUser,
+  getUserByUsername,
 };

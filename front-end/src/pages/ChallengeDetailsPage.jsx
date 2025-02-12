@@ -76,6 +76,17 @@ const ChallengeDetailsPage = () => {
     navigate(`/declare-winner/${id}`);
   };
 
+  const handleCancelInscription = async () => {
+    try {
+      await axios.delete(`http://localhost:3000/api/inscriptions/${userId}/${id}`);
+      alert("Inscripción cancelada");
+      setIsInscribed(false);
+    } catch (error) {
+      console.error("Error al cancelar la inscripción:", error.response?.data || error);
+      setError(error.response?.data?.error || "Error al cancelar la inscripción");
+    }
+  };
+
   if (!challenge) {
     return <div>Cargando...</div>;
   }
@@ -88,20 +99,27 @@ const ChallengeDetailsPage = () => {
           <img src={challenge.imageUrl} className="card-img-top" alt={challenge.name} style={{ height: "450px", objectFit: "cover" }} />
           <div className="card-body">
             <h5 className="card-title">{challenge.name}</h5>
+            <p className="card-text"><strong>ID del Reto:</strong> {challenge.id}</p>
             <p className="card-text"><strong>Descripción:</strong> {challenge.description}</p>
             <p className="card-text"><strong>Recompensa:</strong> {challenge.reward}</p>
             <p className="card-text"><strong>Descripción de la Recompensa:</strong> {challenge.rewardDescription}</p>
             {challenge.winner && (
               <div className="mt-3">
-                <h5>Ganador:</h5>
+                <h5>Felicidades al ganador del reto:</h5>
+                <p><strong>ID del Ganador:</strong> {challenge.winner.user.id}</p>
                 <p><strong>Nombre del Ganador:</strong> {challenge.winner.user.username}</p>
                 <p><strong>Enlace de Prueba:</strong> <a href={challenge.winner.proofLink} target="_blank" rel="noopener noreferrer">{challenge.winner.proofLink}</a></p>
               </div>
             )}
             {isInscribed ? (
-              <button type="button" className="btn-form1" onClick={handleDeclareWinner}>
-                <p>Convertirse en Ganador</p>
-              </button>
+              <>
+                <button type="button" className="btn-form1" onClick={handleDeclareWinner}>
+                  <p>Convertirse en Ganador</p>
+                </button>
+                <button type="button" className="btn-form2" onClick={handleCancelInscription}>
+                  <p>Cancelar Inscripción</p>
+                </button>
+              </>
             ) : (
               <button type="button" className="btn-form3" onClick={handleInscribirse}>
                 <p>Inscribirse</p>

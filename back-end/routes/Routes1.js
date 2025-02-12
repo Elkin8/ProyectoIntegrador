@@ -12,6 +12,7 @@ router.put('/users/:id', userController.updateUser);
 router.delete('/users/:id', userController.deleteUser);
 router.post('/login', userController.loginUser);
 router.get('/current-user', userController.getCurrentUser);
+router.get('/users/username/:username', userController.getUserByUsername);
 
 // Rutas para challenges
 router.post('/challenges', challengeController.createChallenge);
@@ -25,6 +26,7 @@ router.delete('/challenges/:name', challengeController.deleteChallengeByName);
 router.post('/inscriptions', inscriptionController.createInscription);
 router.post('/declare-winner', inscriptionController.declareWinner);
 router.get('/inscriptions/:userId/:challengeId', inscriptionController.checkInscription);
-
+router.delete('/inscriptions/:userId/:challengeId', inscriptionController.deleteInscription);
+router.delete('/winners/:userId/:challengeId', inscriptionController.deleteWinner);
 
 module.exports = router;
