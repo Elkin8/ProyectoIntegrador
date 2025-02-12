@@ -20,6 +20,23 @@ const createInscription = async (req, res) => {
   }
 };
 
+// Verificar si el usuario está inscrito en un reto
+const checkInscription = async (req, res) => {
+  try {
+    const { userId, challengeId } = req.params;
+    const inscription = await Inscription.findOne({ where: { userId, challengeId } });
+    if (inscription) {
+      return res.status(200).json({ isInscribed: true });
+    } else {
+      return res.status(200).json({ isInscribed: false });
+    }
+  } catch (error) {
+    console.error("Error al verificar la inscripción del usuario en el reto:", error);
+    res.status(500).json({ error: "Error interno del servidor" });
+  }
+};
+
+
 // Declarar un ganador para un reto
 const declareWinner = async (req, res) => {
   try {
@@ -43,4 +60,5 @@ const declareWinner = async (req, res) => {
 module.exports = {
   createInscription,
   declareWinner,
+  checkInscription,
 };

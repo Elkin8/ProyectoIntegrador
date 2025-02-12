@@ -1,4 +1,4 @@
-const { Challenge } = require('../db');
+const { Challenge, Winner, User } = require('../db');
 
 // Crear un nuevo challenge
 const createChallenge = async (req, res) => {
@@ -33,7 +33,21 @@ const getChallenges = async (req, res) => {
 const getChallengeById = async (req, res) => {
   const { id } = req.params;
   try {
-    const challenge = await Challenge.findByPk(id);
+    const challenge = await Challenge.findByPk(id, {
+      include: [
+        {
+          model: Winner,
+          as: 'winner',
+          include: [
+            {
+              model: User,
+              as: 'user',
+              attributes: ['username']
+            }
+          ]
+        }
+      ]
+    });
     if (!challenge) {
       return res.status(404).json({ error: 'Challenge no encontrado' });
     }

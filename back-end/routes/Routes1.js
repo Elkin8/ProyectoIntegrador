@@ -24,6 +24,7 @@ router.delete('/challenges/:name', challengeController.deleteChallengeByName);
 // Rutas para inscripciones
 router.post('/inscriptions', inscriptionController.createInscription);
 router.post('/declare-winner', inscriptionController.declareWinner);
+router.get('/inscriptions/:userId/:challengeId', inscriptionController.checkInscription);
 
 
 module.exports = router;
