@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Navbar1 from "../components/Navbar1";
 
@@ -8,7 +8,9 @@ const ChallengeDetailsPage = () => {
   const [challenge, setChallenge] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const [userId, setUserId] = useState("");
+  const [isInscribed, setIsInscribed] = useState(false);
   const [error, setError] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchChallenge = async () => {
@@ -34,9 +36,19 @@ const ChallengeDetailsPage = () => {
       }
     };
 
+    const checkUserInscription = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/api/inscriptions/${userId}/${id}`);
+        setIsInscribed(response.data.isInscribed);
+      } catch (error) {
+        console.error("Error al verificar la inscripción del usuario en el reto:", error);
+      }
+    };
+
     fetchChallenge();
     fetchCurrentUser();
-  }, [id]);
+    checkUserInscription();
+  }, [id, userId]);
 
   const handleInscribirse = () => {
     setShowForm(true);
@@ -53,10 +65,15 @@ const ChallengeDetailsPage = () => {
       await axios.post("http://localhost:3000/api/inscriptions", { userId, challengeId: id });
       alert("Inscripción exitosa");
       setShowForm(false);
+      setIsInscribed(true);
     } catch (error) {
       console.error("Error al inscribirse en el reto:", error.response?.data || error);
       setError(error.response?.data?.error || "Error al inscribirse en el reto");
     }
+  };
+
+  const handleDeclareWinner = () => {
+    navigate(`/declare-winner/${id}`);
   };
 
   if (!challenge) {
@@ -74,9 +91,22 @@ const ChallengeDetailsPage = () => {
             <p className="card-text"><strong>Descripción:</strong> {challenge.description}</p>
             <p className="card-text"><strong>Recompensa:</strong> {challenge.reward}</p>
             <p className="card-text"><strong>Descripción de la Recompensa:</strong> {challenge.rewardDescription}</p>
-            <button type="button" className="btn-form3" onClick={handleInscribirse}>
-              <p>Inscribirse</p>
-            </button>
+            {challenge.winner && (
+              <div className="mt-3">
+                <h5>Ganador:</h5>
+                <p><strong>Nombre del Ganador:</strong> {challenge.winner.user.username}</p>
+                <p><strong>Enlace de Prueba:</strong> <a href={challenge.winner.proofLink} target="_blank" rel="noopener noreferrer">{challenge.winner.proofLink}</a></p>
+              </div>
+            )}
+            {isInscribed ? (
+              <button type="button" className="btn-form1" onClick={handleDeclareWinner}>
+                <p>Convertirse en Ganador</p>
+              </button>
+            ) : (
+              <button type="button" className="btn-form3" onClick={handleInscribirse}>
+                <p>Inscribirse</p>
+              </button>
+            )}
             {showForm && (
               <form onSubmit={handleSubmit} className="mt-3">
                 {error && <p style={{ color: "red" }}>{error}</p>}
