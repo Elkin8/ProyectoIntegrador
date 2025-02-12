@@ -36,6 +36,22 @@ const checkInscription = async (req, res) => {
   }
 };
 
+// Eliminar una inscripción
+const deleteInscription = async (req, res) => {
+  try {
+    const { userId, challengeId } = req.params;
+    const inscription = await Inscription.findOne({ where: { userId, challengeId } });
+    if (!inscription) {
+      return res.status(404).json({ error: "Inscripción no encontrada" });
+    }
+    await inscription.destroy();
+    res.status(200).json({ message: "Inscripción eliminada correctamente" });
+  } catch (error) {
+    console.error("Error al eliminar la inscripción:", error);
+    res.status(500).json({ error: "Error interno del servidor" });
+  }
+};
+
 
 // Declarar un ganador para un reto
 const declareWinner = async (req, res) => {
@@ -57,8 +73,26 @@ const declareWinner = async (req, res) => {
   }
 };
 
+// Eliminar un ganador
+const deleteWinner = async (req, res) => {
+  try {
+    const { userId, challengeId } = req.params;
+    const winner = await Winner.findOne({ where: { userId, challengeId } });
+    if (!winner) {
+      return res.status(404).json({ error: "Ganador no encontrado" });
+    }
+    await winner.destroy();
+    res.status(200).json({ message: "Ganador eliminado correctamente" });
+  } catch (error) {
+    console.error("Error al eliminar el ganador:", error);
+    res.status(500).json({ error: "Error interno del servidor" });
+  }
+};
+
 module.exports = {
   createInscription,
   declareWinner,
   checkInscription,
+  deleteInscription,
+  deleteWinner,
 };

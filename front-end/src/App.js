@@ -9,6 +9,8 @@ import DeleteChallengePage from "./pages/DeleteChallengePage.jsx";
 import UpdateChallengePage from "./pages/UpdateChallengePage.jsx";
 import ChallengeDetailsPage from "./pages/ChallengeDetailsPage.jsx";
 import DeclareWinnerPage from "./pages/DeclareWinnerPage.jsx";
+import ContactPage from "./pages/Contact.jsx";
+import DeleteWinnerPage from "./pages/DeleteWinnerPage.jsx";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
         <Route path="/update-challenge" element={<UpdateChallengePage />} />
         <Route path="/challenge/:id" element={<ChallengeDetailsPage />} />
         <Route path="/declare-winner/:id" element={<DeclareWinnerPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/delete-winner" element={<DeleteWinnerPage />} />
       </Routes>
     </Router>
   );

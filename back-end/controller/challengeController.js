@@ -42,7 +42,7 @@ const getChallengeById = async (req, res) => {
             {
               model: User,
               as: 'user',
-              attributes: ['username']
+              attributes: ['id', 'username']
             }
           ]
         }

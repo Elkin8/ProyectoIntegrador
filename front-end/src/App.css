@@ -50,6 +50,16 @@
   box-shadow: 10px 10px 20px rgba(0,0,0,0.9);
 }
 
+.containerf h1 {
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.containerf p {
+  text-align: left;
+  font-family: 'Courier New', Courier, monospace;
+}
+
 
 .navbar {
   width: 100%;
@@ -220,4 +230,11 @@
 h2 {
   text-align: center;
   font-family: 'Courier New', Courier, monospace;
+}
+
+.separator { 
+  height: 4px; 
+  background-color: black; 
+  margin: 20px 0; 
+  width: 100%; 
 }

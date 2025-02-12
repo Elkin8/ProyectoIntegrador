@@ -45,7 +45,6 @@ const Home = () => {
       <Navbar1 />
       <div className="container mt-5">
         <h2>Bienvenido {username}</h2>
-        <h2><strong>Retos</strong></h2>
         <div className="row">
           {challenges.map((challenge) => (
             <div key={challenge.id} className="col-md-4 mb-4">

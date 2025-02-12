@@ -60,14 +60,13 @@ const LoginForm = () => {
         <div className="mb-3">
           <label htmlFor="exampleInputEmail1" className="form-label">Correo Electrónico:</label>
           <input type="email" name="email" className="form-control" aria-describedby="emailHelp" placeholder="Correo electrónico" value={formData.email} onChange={handleChange} />
-          <div id="emailHelp" className="form-text">We'll never share your email with anyone else.</div>
         </div>
         <div className="mb-3">
-          <label htmlFor="exampleInputPassword1" className="form-label">Password:</label>
+          <label htmlFor="exampleInputPassword1" className="form-label">Contraseña:</label>
           <input type="password" name="password" className="form-control" placeholder="Contraseña" value={formData.password} onChange={handleChange} />
         </div>
         <button type="submit" className="btn-form3">Iniciar Sesión</button>
-        <p>------------------------------------------------------------------------------------------------------------------</p>
+        <hr className="separator" />
         <button type="button" className="btn-form4" onClick={handleRegisterRedirect}>Registrarse</button>
       </form>
     </div>

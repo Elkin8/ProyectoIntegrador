@@ -44,9 +44,9 @@ const UpdateChallengePage = () => {
     <div>
       <AdminNavbar />
       <div className="containerf">
-        <h2>Actualizar Reto</h2>
+        <h2><strong>Actualizar Reto</strong></h2>
         <div className="mb-3">
-          <label htmlFor="challengeName" className="form-label">Nombre del Reto:</label>
+          <label htmlFor="challengeName" className="form-label">Id del Reto:</label>
           <input
             type="text"
             className="form-control"
