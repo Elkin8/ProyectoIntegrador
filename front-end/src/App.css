@@ -238,3 +238,40 @@ h2 {
   margin: 20px 0; 
   width: 100%; 
 }
+
+
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.transparent-table {
+  width: 100%;
+  border-collapse: collapse;
+  box-shadow: 8px 8px 10px rgba(0, 0, 0, 0.9);
+  border: 2px solid black;
+  background-color: transparent;
+}
+
+.transparent-table thead {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+}
+
+.transparent-table th,
+.transparent-table td {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: left;
+}
+
+.transparent-table tbody tr {
+  background-color: transparent;
+}
+
+.table-wrapper {
+  overflow-x: auto;
+}

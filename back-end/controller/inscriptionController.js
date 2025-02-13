@@ -89,10 +89,37 @@ const deleteWinner = async (req, res) => {
   }
 };
 
+
+// Obtener todos los ganadores
+const getWinners = async (req, res) => {
+  try {
+    const winners = await Winner.findAll({
+      include: [
+        {
+          model: User,
+          as: 'user',
+          attributes: ['id', 'username', 'identity', 'email']
+        },
+        {
+          model: Challenge,
+          as: 'challenge',
+          attributes: ['id']
+        }
+      ]
+    });
+    res.status(200).json(winners);
+  } catch (error) {
+    console.error('Error al obtener los ganadores:', error);
+    res.status(500).json({ error: 'Error interno del servidor' });
+  }
+};
+
+
 module.exports = {
   createInscription,
   declareWinner,
   checkInscription,
   deleteInscription,
   deleteWinner,
+  getWinners,
 };

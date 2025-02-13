@@ -37,7 +37,7 @@ const DeclareWinnerPage = () => {
 
     try {
       await axios.post("http://localhost:3000/api/declare-winner", { userId, challengeId: id, proofLink });
-      alert("¡Felicidades! Has sido declarado ganador.");
+      alert("¡Felicidades! Ganaste este reto, vamos a revisar tu link y te notificaremos por correo.");
       navigate(`/challenge/${id}`);
     } catch (error) {
       console.error("Error al declarar el ganador del reto:", error.response?.data || error);
