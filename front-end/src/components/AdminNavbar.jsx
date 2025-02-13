@@ -33,13 +33,13 @@ const AdminNavbar = () => {
               </button>
             </div>
             <div className="col text-center border-end py-2"> 
-              <button onClick={() => navigate("/delete-challenge")}>
-                <p>Eliminar reto</p>
+              <button onClick={() => navigate("/delete-winner")}>
+                <p>Eliminar ganador</p>
               </button>
             </div>
             <div className="col text-center border-end py-2"> 
-              <button onClick={() => navigate("/delete-winner")}>
-                <p>Eliminar ganador</p>
+              <button onClick={() => navigate("/delete-challenge")}>
+                <p>Eliminar reto</p>
               </button>
             </div>
             <div className="col text-center py-2"> 
