@@ -67,6 +67,7 @@ const LoginForm = () => {
         </div>
         <button type="submit" className="btn-form3">Iniciar Sesión</button>
         <hr className="separator" />
+        <p>¿No tienes una cuenta? Regístrate aquí:</p>
         <button type="button" className="btn-form4" onClick={handleRegisterRedirect}>Registrarse</button>
       </form>
     </div>

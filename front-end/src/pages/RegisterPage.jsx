@@ -35,7 +35,7 @@ const RegisterPage = () => {
   return (
     <div class="containerf">
       <form onSubmit={handleSubmit}>
-      <h2>Registro de Usuario</h2>
+      <h2><strong>Regístrate</strong></h2>
       <div class="mb-3">
         <label for="exampleInputUser1" class="form-label">Nombre de Usuario:</label>
         <InputField type="text" name="username" class="form-control" aria-describedby="emailHelp" placeholder="Nombre de usuario" value={formData.username} onChange={handleChange} />
