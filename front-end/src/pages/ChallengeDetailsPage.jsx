@@ -99,37 +99,46 @@ const ChallengeDetailsPage = () => {
           <img src={challenge.imageUrl} className="card-img-top" alt={challenge.name} style={{ height: "450px", objectFit: "cover" }} />
           <div className="card-body">
             <h5 className="card-title">{challenge.name}</h5>
-            <p className="card-text"><strong>ID del Reto:</strong> {challenge.id}</p>
+            <p className="card-text"><strong>Reto número:</strong> {challenge.id}</p>
             <p className="card-text"><strong>Descripción:</strong> {challenge.description}</p>
             <p className="card-text"><strong>Recompensa:</strong> {challenge.reward}</p>
             <p className="card-text"><strong>Descripción de la Recompensa:</strong> {challenge.rewardDescription}</p>
-            {challenge.winner && (
+            {challenge.winner ? (
               <div className="mt-3">
                 <h5>Felicidades al ganador del reto:</h5>
-                <p><strong>ID del Ganador:</strong> {challenge.winner.user.id}</p>
+                <p><strong>Jugador número:</strong> {challenge.winner.user.id}</p>
                 <p><strong>Nombre del Ganador:</strong> {challenge.winner.user.username}</p>
                 <p><strong>Enlace de Prueba:</strong> <a href={challenge.winner.proofLink} target="_blank" rel="noopener noreferrer">{challenge.winner.proofLink}</a></p>
+                <p className="alert alert-info text-center">Este reto ya tiene un ganador</p>
+                {isInscribed && (
+                  <button type="button" className="btn-form2" onClick={handleCancelInscription}>
+                    <p>Cancelar Inscripción</p>
+                  </button>
+                )}
               </div>
-            )}
-            {isInscribed ? (
-              <>
-                <button type="button" className="btn-form1" onClick={handleDeclareWinner}>
-                  <p>Convertirse en Ganador</p>
-                </button>
-                <button type="button" className="btn-form2" onClick={handleCancelInscription}>
-                  <p>Cancelar Inscripción</p>
-                </button>
-              </>
             ) : (
-              <button type="button" className="btn-form3" onClick={handleInscribirse}>
-                <p>Inscribirse</p>
-              </button>
+              <>
+                {isInscribed ? (
+                  <>
+                    <button type="button" className="btn-form1" onClick={handleDeclareWinner}>
+                      <p>Convertirse en Ganador</p>
+                    </button>
+                    <button type="button" className="btn-form2" onClick={handleCancelInscription}>
+                      <p>Cancelar Inscripción</p>
+                    </button>
+                  </>
+                ) : (
+                  <button type="button" className="btn-form3" onClick={handleInscribirse}>
+                    <p>Inscribirse</p>
+                  </button>
+                )}
+              </>
             )}
             {showForm && (
               <form onSubmit={handleSubmit} className="mt-3">
                 {error && <p style={{ color: "red" }}>{error}</p>}
                 <div className="mb-3">
-                  <label htmlFor="userId" className="form-label">ID del Usuario:</label>
+                  <label htmlFor="userId" className="form-label">Jugador número:</label>
                   <input
                     type="text"
                     className="form-control"
@@ -139,7 +148,7 @@ const ChallengeDetailsPage = () => {
                   />
                 </div>
                 <div className="mb-3">
-                  <label htmlFor="challengeId" className="form-label">ID del Reto:</label>
+                  <label htmlFor="challengeId" className="form-label">Reto número:</label>
                   <input
                     type="text"
                     className="form-control"

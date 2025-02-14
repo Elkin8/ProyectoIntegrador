@@ -5,7 +5,7 @@ const AdminNavbar = () => {
 
   const handleLogout = () => {
     localStorage.removeItem("token");
-    navigate("/");
+    navigate("/login");
   };
 
   return (
@@ -17,6 +17,11 @@ const AdminNavbar = () => {
 
         <div className="container-fluid w-100 p-0"> 
           <div className="row g-0"> 
+            <div className="col text-center border-end py-2">
+              <button onClick={() => navigate("/admin")}>
+                <p>Lista de Ganadores</p>
+              </button>
+            </div>
             <div className="col text-center border-end py-2"> 
               <button onClick={() => navigate("/create-challenge")}>
                 <p>Crear reto</p>
@@ -28,13 +33,13 @@ const AdminNavbar = () => {
               </button>
             </div>
             <div className="col text-center border-end py-2"> 
-              <button onClick={() => navigate("/delete-challenge")}>
-                <p>Eliminar reto</p>
+              <button onClick={() => navigate("/delete-winner")}>
+                <p>Eliminar ganador</p>
               </button>
             </div>
             <div className="col text-center border-end py-2"> 
-              <button onClick={() => navigate("/delete-winner")}>
-                <p>Eliminar ganador</p>
+              <button onClick={() => navigate("/delete-challenge")}>
+                <p>Eliminar reto</p>
               </button>
             </div>
             <div className="col text-center py-2"> 

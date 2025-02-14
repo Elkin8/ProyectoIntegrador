@@ -34,7 +34,7 @@ const DeleteChallengePage = () => {
       <div className="containerf">
         <h2><strong>Eliminar Reto</strong></h2>
         <div className="mb-3">
-          <label htmlFor="challengeName" className="form-label">Nombre del Reto:</label>
+          <label htmlFor="challengeName" className="form-label">ID del Reto:</label>
           <input
             type="text"
             className="form-control"

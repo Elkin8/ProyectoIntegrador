@@ -53,6 +53,10 @@ const LoginForm = () => {
   };
 
   return (
+  <div>
+    <div className="back">
+        <a href="/" className="back-link">Volver a la página de bienvenida</a>
+      </div>
     <div className="containerf">
       <form onSubmit={handleSubmit}>
         <h2><strong>Iniciar Sesión</strong></h2>
@@ -67,9 +71,11 @@ const LoginForm = () => {
         </div>
         <button type="submit" className="btn-form3">Iniciar Sesión</button>
         <hr className="separator" />
+        <p>¿No tienes una cuenta? Regístrate aquí:</p>
         <button type="button" className="btn-form4" onClick={handleRegisterRedirect}>Registrarse</button>
       </form>
     </div>
+  </div>
   );
 };
 

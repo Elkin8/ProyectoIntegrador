@@ -11,13 +11,15 @@ import ChallengeDetailsPage from "./pages/ChallengeDetailsPage.jsx";
 import DeclareWinnerPage from "./pages/DeclareWinnerPage.jsx";
 import ContactPage from "./pages/Contact.jsx";
 import DeleteWinnerPage from "./pages/DeleteWinnerPage.jsx";
+import WelcomePage from "./pages/WelcomePage.jsx"; 
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<LoginForm />} />  
+        <Route path="/" element={<WelcomePage />} /> 
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginForm />} />
         <Route path="/home" element={<Home />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/create-challenge" element={<ChallengePage />} />

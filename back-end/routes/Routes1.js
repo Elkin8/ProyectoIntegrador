@@ -28,5 +28,6 @@ router.post('/declare-winner', inscriptionController.declareWinner);
 router.get('/inscriptions/:userId/:challengeId', inscriptionController.checkInscription);
 router.delete('/inscriptions/:userId/:challengeId', inscriptionController.deleteInscription);
 router.delete('/winners/:userId/:challengeId', inscriptionController.deleteWinner);
+router.get('/winners', inscriptionController.getWinners); 
 
 module.exports = router;
