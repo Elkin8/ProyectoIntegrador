@@ -6,26 +6,16 @@ const WelcomePage = () => {
   const navigate = useNavigate();
 
   return (
-    <div>
+    <div className="welcome-background">
       <div className="welcome-container">
-        <h1>Bienvenido a Proyecto Integrador</h1>
+        <h1><strong>Bienvenido a Desafía y Salva</strong></h1>
         <p>
-          Nuestra aplicación está diseñada para gestionar retos y competiciones. Los usuarios pueden inscribirse en diferentes retos, participar y subir pruebas de sus logros. Los administradores pueden crear, actualizar y eliminar retos, así como declarar ganadores y gestionar inscripciones.
-        </p>
+        En esta página podrás desafiarte a ti mismo y competir contra otros usuarios en emocionantes retos ambientales diseñados para fomentar hábitos sostenibles. Si logras completar los desafíos antes que los demás, podrás recibir increíbles recompensas otorgadas por nuestros patrocinadores. Pero lo más importante es que, al participar, estarás contribuyendo activamente a la reducción de la huella de carbono y ayudando a proteger nuestro planeta. ¡Únete a la competencia y sé parte del cambio!        </p>
         <p>
-          Funcionalidades principales:
-        </p>
-        <ul>
-          <li>Crear, actualizar y eliminar retos.</li>
-          <li>Inscribirse en retos y subir pruebas de logros.</li>
-          <li>Declarar ganadores y gestionar inscripciones.</li>
-          <li>Ver la lista de ganadores y sus pruebas.</li>
-        </ul>
-        <p>
-          ¡Esperamos que disfrutes usando nuestra aplicación y que te ayude a gestionar tus retos y competiciones de manera eficiente!
+        Esperamos que disfrutes participando en nuestros desafíos y que, a través de ellos, podamos seguir fomentando una mayor conciencia sobre la importancia de reducir nuestra huella de carbono. Cada acción que tomamos, por pequeña que parezca, contribuye a la protección del medio ambiente y al bienestar de nuestro planeta. Juntos, podemos generar un impacto positivo y promover hábitos sostenibles en nuestra vida diaria. ¡Anímate a formar parte del cambio y a inspirar a otros a unirse a esta causa!
         </p>
         <div className="button-container">
-          <button className="btn-custom" onClick={() => navigate("/login")}>Iniciar Sesión</button>
+          <button className="btn-form1" onClick={() => navigate("/login")}>Iniciar Sesión</button>
         </div>
       </div>
     </div>

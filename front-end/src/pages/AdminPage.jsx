@@ -22,7 +22,7 @@ const AdminPage = () => {
     <div>
       <AdminNavbar />
       <div className="container">
-        <h2>Lista de Ganadores</h2>
+        <h2><strong>Lista de Ganadores</strong></h2>
         <table className="transparent-table">
           <thead>
             <tr>

@@ -39,10 +39,6 @@ module.exports = (sequelize, DataTypes) => {
   });
 
   User.associate = function(models) {
-    User.hasMany(models.Audit, {
-      foreignKey: 'userId',
-      as: 'audits'
-    });
     User.hasMany(models.Challenge, {
       foreignKey: 'userId',
       as: 'challenges'

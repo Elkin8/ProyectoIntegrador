@@ -24,7 +24,7 @@ const RegisterPage = () => {
     try {
       const response = await axios.post("http://localhost:3000/api/users", formData);
       alert("Usuario registrado con éxito");
-      navigate("/"); 
+      navigate("/login"); 
       console.log(response.data);
     } catch (error) {
       console.error("Error al registrar usuario:", error.response?.data || error);
@@ -33,6 +33,10 @@ const RegisterPage = () => {
   };
 
   return (
+  <div>
+      <div className="back">
+        <a href="/login" className="back-link">Volver al  Inicio de Sesión</a>
+      </div>
     <div class="containerf">
       <form onSubmit={handleSubmit}>
       <h2><strong>Regístrate</strong></h2>
@@ -59,6 +63,7 @@ const RegisterPage = () => {
         <button type="submit" class="btn-form4">Registrarse</button>
       </form>
     </div>
+  </div>
   );
 };
 
